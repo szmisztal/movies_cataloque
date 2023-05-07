@@ -47,13 +47,14 @@ def today():
     today = datetime.date.today()
     return render_template("today.html", movies = movies, today = today)
 
-@app.route("/favorites/add", methods=['POST'])
+@app.route("/favorites/add", methods = ['POST'])
 def add_to_favorites():
+    favorites = []
     data = request.form
     movie_id = data.get('movie_id')
     movie_title = data.get('movie_title')
     if movie_id and movie_title:
-        favorites.add(movie_id)
+        favorites.append(movie_id)
         flash(f'Movie added {movie_title} to favorites !')
     return redirect(url_for('homepage'))
 
