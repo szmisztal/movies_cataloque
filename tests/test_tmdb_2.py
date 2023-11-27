@@ -17,5 +17,3 @@ def test_homepage(monkeypatch, list_type):
         response = client.get(f'/?list_type={list_type}')
         assert response.status_code == 200
         api_mock.assert_called_once_with(how_many = 8, list_type = list_type)
-
-
